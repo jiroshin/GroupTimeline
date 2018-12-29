@@ -1,0 +1,10 @@
+<h1>users#toppageアクション</h1>
+
+<% if logged_in? %>
+      <h1>こんにちは、<%= current_user.id %>さん</h1>
+      <%= link_to 'スクールの登録', controller: 'users', action: 'edit', id: current_user.id %> 
+      <%= link_to 'タイムラインの表示', controller: 'users', action: 'timeline', school_name: current_user.school_name %> 
+      <%= link_to 'Logout', '/logout' %>
+    <% else %>
+      <%= link_to 'Twitter Login', '/auth/twitter' %> 
+<% end %>

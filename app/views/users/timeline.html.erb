@@ -1,0 +1,27 @@
+<h1>users#timelineアクション</h1>
+
+<%= current_user.school_name %>のタイムラインにようこそ
+
+<% @users.each do |user| %>
+  <ul>
+    <il>名前：<%= user.user_name %></li>
+    <il>学校：<%= user.school_name %></li>
+  </ul>
+<% end %>
+
+
+
+<% user_num = 20*@users.length %>
+<% number = 0 %>
+
+<div class="wrap">
+<% user_num.times do %>
+  <% if @tweets_id[number] != nil %>
+    <div data-date="<%= @tweets_id[number].created_at %>">【<%= @tweets_id[number].user.name %>】
+    <%= @tweets_id[number].text %>
+    <%= @tweets_id[number].created_at %> 
+    </div>
+  <% end %>
+<% number += 1 %>
+<% end %>
+</div>

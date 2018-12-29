@@ -1,0 +1,11 @@
+学校の登録
+<%= form_for (current_user) do |f| %>
+
+<%= f.label :user_name, "使用する名前" %>
+<%= f.text_field :user_name, autofocus: true %>
+
+<%= f.label :school_name, "学校名" %>
+<%= f.text_field :school_name, autofocus: true %>
+
+<%= f.submit "登録"%>
+<% end %>
