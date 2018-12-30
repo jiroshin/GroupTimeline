@@ -1,11 +1,14 @@
-学校の登録
+<div class="timeline-register">
+<center>タイムラインの登録</center>
+
 <%= form_for (current_user) do |f| %>
 
-<%= f.label :user_name, "使用する名前" %>
-<%= f.text_field :user_name, autofocus: true %>
-
 <%= f.label :school_name, "学校名" %>
-<%= f.text_field :school_name, autofocus: true %>
+<%= f.text_field :school_name, autofocus: true, class: 'form-control timeline-name' %>
 
-<%= f.submit "登録"%>
+<center><%= f.submit "登録", class: 'group_register_btn'%></center>
 <% end %>
+
+<%= link_to 'toppageに戻る', root_url, class: 'timeline-register' %>
+
+</div>

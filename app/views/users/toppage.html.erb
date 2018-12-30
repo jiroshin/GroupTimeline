@@ -1,10 +1,25 @@
-<h1>users#toppageアクション</h1>
-
 <% if logged_in? %>
-      <h1>こんにちは、<%= current_user.id %>さん</h1>
-      <%= link_to 'スクールの登録', controller: 'users', action: 'edit', id: current_user.id %> 
-      <%= link_to 'タイムラインの表示', controller: 'users', action: 'timeline', school_name: current_user.school_name %> 
-      <%= link_to 'Logout', '/logout' %>
-    <% else %>
-      <%= link_to 'Twitter Login', '/auth/twitter' %> 
+
+      <center>
+      <div class="profile animated zoomIn">
+      <img src=<%= current_user.image_url %> alt="プロフィール画像" class="profile-image">
+      </div>
+      
+      <div><%= link_to 'スクールの登録', {controller: 'users', action: 'edit', id: current_user.id}, class: 'toppage_btn' %> </div>
+      
+      
+      <div><%= link_to current_user.school_name + ' タイムライン', {controller: 'users', action: 'timeline', id: current_user.id}, class: 'toppage_btn' %></div> 
+      
+      
+      <div><%= link_to 'ログアウト', '/logout', class: 'toppage_btn' %></div>
+      </center>
+
+      
+<% else %>
+  <div class="top-title">フォロー以外の繋がりを。</div>
+  
+  <a href="/auth/twitter" class="circle-moji">
+  <div class="circle animated rotateIn">Twitterでログイン</div>
+  </a>
+  
 <% end %>

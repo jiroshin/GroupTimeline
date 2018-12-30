@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
+  before_action :require_user_logged_in, except: :toppage
+  before_action :correct_user, only: [:timeline, :edit]
+  
   def toppage
   end
   
   def timeline
     
+    #ツイッターAPI呼び出し
         client = Twitter::REST::Client.new do |config|
         config.consumer_key         = ENV['APP_ID']
         config.consumer_secret      = ENV['APP_SECRET']
@@ -11,11 +15,12 @@ class UsersController < ApplicationController
         config.access_token_secret  = ENV['ACCESS_TOKEN_SECRET']
         end
       
-      
+    #学校名が同じ人を取得してくる
       @users = User.where(school_name: current_user.school_name)
       
       @uids = []
       
+    #学校名が同じ人のユーザーIDをuids配列に入れる
       @users.each do|user|
        @uids << user.uid
       end
@@ -24,14 +29,16 @@ class UsersController < ApplicationController
       
       @tweets_id = []
       
+    #uids配列からユーザーIDを取り出してそれぞれのツイートを取得する
       @uids.each do |uid|
-        @num = uid.to_i
+        @user_id = uid.to_i
         
+      #鍵アカだったらエラーを回避
         begin
-        # 例外が起こるかも知れないコード
-        @tweets_id << client.user_timeline(@num, options = {count: 20, exclude_replies: true})
-        rescue # 変数(例外オブジェクトの代入)
-        # 例外が発生した時のコード
+        # エラーが起こるかも知れないコード。20のツイートを取得してる
+        @tweets_id << client.user_timeline(@user_id, options = {count: 20, exclude_replies: true})
+        rescue 
+        # エラーが発生した時のコード
         end
         
       
@@ -50,7 +57,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'スクールが登録されました'
       redirect_to root_url
      else
-      flash.now[:notice] = 'エラーです。もう一度'
+      flash.now[:notice] = '登録に失敗しました。もう一度入力してください。'
       render :edit
      end
   end
@@ -59,9 +66,13 @@ class UsersController < ApplicationController
   private
  
 #ストロングパラメーター
-def user_params
-  params.require(:user).permit(:user_name, :school_name)
-end
+  def user_params
+    params.require(:user).permit(:school_name)
+  end
 
-
+  
+  def correct_user
+      @user = User.find(params[:id])
+      redirect_to root_url unless @user == current_user
+  end
 end

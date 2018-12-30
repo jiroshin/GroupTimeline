@@ -1,27 +1,32 @@
-<h1>users#timelineアクション</h1>
+<div class="timeline-title"><%= current_user.school_name %>のタイムラインにようこそ</div>
 
-<%= current_user.school_name %>のタイムラインにようこそ
+<center><i class="fas fa-sync-alt reload-icon"></i> <%= link_to 'ツイートの更新', {controller: 'users', action: 'timeline', id: current_user.id}, class: 'reload_btn' %></center>
 
-<% @users.each do |user| %>
-  <ul>
-    <il>名前：<%= user.user_name %></li>
-    <il>学校：<%= user.school_name %></li>
-  </ul>
-<% end %>
+  <% user_num = 20*@users.length %>
+  <% number = 0 %>
 
-
-
-<% user_num = 20*@users.length %>
-<% number = 0 %>
-
-<div class="wrap">
-<% user_num.times do %>
-  <% if @tweets_id[number] != nil %>
-    <div data-date="<%= @tweets_id[number].created_at %>">【<%= @tweets_id[number].user.name %>】
-    <%= @tweets_id[number].text %>
-    <%= @tweets_id[number].created_at %> 
-    </div>
+  <div class="wrap">
+  <% user_num.times do %>
+      <% if @tweets_id[number] != nil %>
+        <div data-date="<%= @tweets_id[number].created_at %>" class="tweet" id="clearfix">
+          
+          <div class="float-left">
+          <img src=<%= @tweets_id[number].user.profile_image_url %> alt="プロフィール画像" class="tweet-profile-image">
+          
+          <div><a href="https://twitter.com/<%= @tweets_id[number].user.screen_name %>" target="_blank" class="tweet-name">
+            <%= @tweets_id[number].user.name %>
+          </a></div>
+          </div>
+          
+        <div class="tweet-contents"><%= @tweets_id[number].text %>
+        <div><span style="font-size:7px;">(<%= @tweets_id[number].created_at %>)</span></div>
+        </div>
+            
+        </div>
+      <% end %>
+    <% number += 1 %>
   <% end %>
-<% number += 1 %>
-<% end %>
-</div>
+  </div>
+  
+
+  <%= link_to 'toppageに戻る', root_url %>

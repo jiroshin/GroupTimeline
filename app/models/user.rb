@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :school_name, presence: true, length: { maximum: 20 }
+  
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
     uid = auth[:uid]

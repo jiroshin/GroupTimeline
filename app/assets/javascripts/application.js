@@ -16,13 +16,3 @@
 //= require_tree .
 
 
-$( function() {
-	var $_w = $( '.wrap' );
-  var tmp = $_w.find( '>div' ).sort( function( a, b ) {
-    return Date.parse( $( b ).data( 'date' ) ) - Date.parse( $( a ).data( 'date' ) )
-  } );
-  $_w.empty();
-  tmp.each( function() {
-    $_w.append( this );
-  } );
-} );
