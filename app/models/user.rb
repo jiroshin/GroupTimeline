@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  validates :school_name, presence: true, length: { maximum: 20 }
+  validates :elementary_name, length: { maximum: 20 }
+  validates :junior_name, length: { maximum: 20 }
+  validates :high_name, length: { maximum: 20 }
+  validates :school_name, length: { maximum: 20 }
+  validates :circle_name, length: { maximum: 20 }
   
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]

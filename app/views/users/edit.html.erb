@@ -1,10 +1,23 @@
 <div class="timeline-register">
-<center>タイムラインの登録</center>
+<center style="margin-bottom:15px;">タイムラインの登録</center>
 
 <%= form_for (current_user) do |f| %>
 
-<%= f.label :school_name, "学校名" %>
+<%= f.label :elementary_name, "小学校" %>
+<%= f.text_field :elementary_name, autofocus: true, class: 'form-control timeline-name' %>
+
+<%= f.label :junior_name, "中学校" %>
+<%= f.text_field :junior_name, autofocus: true, class: 'form-control timeline-name' %>
+
+<%= f.label :high_name, "高校" %>
+<%= f.text_field :high_name, autofocus: true, class: 'form-control timeline-name' %>
+
+<%= f.label :school_name, "大学/専門学校" %>
 <%= f.text_field :school_name, autofocus: true, class: 'form-control timeline-name' %>
+
+<%= f.label :circle_name, "イベント/サークル/趣味!?" %>
+<%= f.text_field :circle_name, autofocus: true, class: 'form-control timeline-name' %>
+<div style="font-size:8px;">※入力は20文字以内です。</div>
 
 <center><%= f.submit "登録", class: 'group_register_btn'%></center>
 <% end %>

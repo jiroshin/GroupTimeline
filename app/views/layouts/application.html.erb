@@ -4,8 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SchoolTimeline</title>
+    <title>ワードでタイムライン</title>
+    <meta name="description" content="ツイッターアカウントで簡単にログイン！趣味やイベント、学校の名前を登録してフォロー関係を超えたタイムラインをつくろう">
     <%= csrf_meta_tags %>
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ワードでタイムライン" />
+    <meta name="twitter:description" content="ツイッターアカウントで簡単にログイン！趣味やイベント、学校の名前を登録してフォロー関係を超えたタイムラインをつくろう" />
+    <meta name="twitter:image" content="<%= asset_url('twitter.jpg') %>" />
+    
+    <meta property="og:url" content="https://word-timeline.herokuapp.com/" /> 
+    <meta property="og:title" content="ワードでタイムライン" /> 
+    <meta property="og:description" content="ツイッターアカウントで簡単にログイン！趣味やイベント、学校の名前を登録してフォロー関係を超えたタイムラインをつくろう" /> 
+    <meta property="og:image" content="<%= asset_url('twitter.jpg') %>" /> 
+    
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" type="text/css" />
@@ -24,6 +36,7 @@
     <% end %>
   
     <%= yield %>
+    <%= render 'layouts/footer' %>
 
   </div>
   

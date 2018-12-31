@@ -5,21 +5,48 @@
       <img src=<%= current_user.image_url %> alt="プロフィール画像" class="profile-image">
       </div>
       
-      <div><%= link_to 'スクールの登録', {controller: 'users', action: 'edit', id: current_user.id}, class: 'toppage_btn' %> </div>
+      <div style="margin-bottom:40px;"><%= link_to 'タイムラインの登録', {controller: 'users', action: 'edit', id: current_user.id}, class: 'toppage_btn' %> </div>
+      
+      <% if current_user.elementary_name.present? %>
+      <div class="timeline-select"><i class="fas fa-angle-right"></i> <%= link_to current_user.elementary_name + 'のタイムライン', {controller: 'users', action: 'elementary', id: current_user.id} %></div>
+      <% end %>
+      
+      <% if current_user.junior_name.present? %>
+      <div class="timeline-select"><i class="fas fa-angle-right"></i> <%= link_to current_user.junior_name + 'のタイムライン', {controller: 'users', action: 'junior', id: current_user.id} %></div>
+      <% end %>
+      
+      <% if current_user.high_name.present? %>
+      <div class="timeline-select"><i class="fas fa-angle-right"></i> <%= link_to current_user.high_name + 'のタイムライン', {controller: 'users', action: 'high', id: current_user.id} %></div>
+      <% end %>
+      
+      <% if current_user.school_name.present? %>
+      <div class="timeline-select"><i class="fas fa-angle-right"></i> <%= link_to current_user.school_name + 'のタイムライン', {controller: 'users', action: 'college', id: current_user.id} %></div>
+      <% end %>
+      
+      <% if current_user.circle_name.present? %>
+      <div class="timeline-select"><i class="fas fa-angle-right"></i> <%= link_to current_user.circle_name + 'のタイムライン', {controller: 'users', action: 'circle', id: current_user.id} %></div>
+      <% end %>
       
       
-      <div><%= link_to current_user.school_name + ' タイムライン', {controller: 'users', action: 'timeline', id: current_user.id}, class: 'toppage_btn' %></div> 
-      
-      
-      <div><%= link_to 'ログアウト', '/logout', class: 'toppage_btn' %></div>
+      <div style="margin:50px;"><%= link_to 'ログアウト', '/logout', class: 'toppage_logout' %></div>
       </center>
 
       
 <% else %>
-  <div class="top-title">フォロー以外の繋がりを。</div>
+  <div class="top-title">フォロー以外の繋がり方を。</div>
   
-  <a href="/auth/twitter" class="circle-moji">
-  <div class="circle animated rotateIn">Twitterでログイン</div>
-  </a>
   
+    <a href="/auth/twitter" class="circle-moji">
+      <div class="circle animated rotateIn">Twitterでログイン</div>
+    </a>
+  
+  
+  <center>
+  <div class="change-top">
+    <div class="what-this">
+      <div>どうやって使うの？</div>
+    </div>
+  </div>
+  </center>
 <% end %>
+

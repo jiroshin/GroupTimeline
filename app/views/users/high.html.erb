@@ -1,0 +1,39 @@
+<div class="timeline-title"><%= current_user.high_name %>のタイムラインにようこそ</div>
+
+<center><i class="fas fa-sync-alt reload-icon"></i> <%= link_to 'ツイートの更新', {controller: 'users', action: 'high', id: current_user.id}, class: 'reload_btn' %></center>
+
+  <% user_num = 30*@users.length %>
+  <% number = 0 %>
+
+  <div class="wrap">
+  <% user_num.times do %>
+      <% if @tweets_id[number] != nil %>
+        <div data-date="<%= @tweets_id[number].created_at %>" class="tweet" id="clearfix">
+          
+          <div class="float-left">
+          <img src=<%= @tweets_id[number].user.profile_image_url %> alt="プロフィール画像" class="tweet-profile-image">
+          
+          <div><a href="https://twitter.com/<%= @tweets_id[number].user.screen_name %>" target="_blank" class="tweet-name">
+            <%= @tweets_id[number].user.name %>
+          </a></div>
+          </div>
+          
+        <div class="tweet-contents"><%= @tweets_id[number].text %>
+        
+        <div>
+          <% @tweets_id[number].media.each do |media| %>
+          <img src=<%= media.media_url %> alt="ツイートに含まれる画像" class="tweet-image">
+          <% end %>
+        </div>
+        
+        <div><span style="font-size:7px;">(<%= @tweets_id[number].created_at %>)</span></div>
+        </div>
+            
+        </div>
+      <% end %>
+    <% number += 1 %>
+  <% end %>
+  </div>
+  
+
+  <%= link_to 'toppageに戻る', root_url %>

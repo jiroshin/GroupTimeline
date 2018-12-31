@@ -57,6 +57,21 @@ body {
   color:white;
 }
 
+.circle-moji:active {
+  text-decoration: none;
+  color:white;
+}
+
+.circle-moji:visited {
+  text-decoration: none;
+  color:white;
+}
+
+.circle-moji:focus {
+  text-decoration: none;
+  color:white;
+}
+
 /*トップページのタイトル*/
 .top-title {
   text-align:center;
@@ -68,7 +83,7 @@ body {
 
 /*ログイン後のトップページのボタン*/
 .toppage_btn{
-    display: inline-block;
+    width:30%;
     padding: 0.5em 1em;
     text-decoration: none;
     color: white;
@@ -79,6 +94,23 @@ body {
 }
 
 .toppage_btn:hover{
+  text-decoration: none;
+  color: grey;
+}
+
+.toppage_logout{
+    width:30%;
+    padding: 0.3em 0.7em;
+    text-decoration: none;
+    color: #585858;
+    transition: .4s;
+    background-color: white;
+    border: solid #00aced 2px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.toppage_logout:hover{
   text-decoration: none;
   color: grey;
 }
@@ -165,32 +197,87 @@ body {
    font-size: 0.9em 
 }
 
+/*タイムラインの登録画面全体*/
 .timeline-register {
   width: 300px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
+/*タイムライン登録のボタン*/
 .group_register_btn{
     display: inline-block;
-    padding: 5px 10px;
     text-decoration: none;
-    color: #FFF;
-    background: #58ACFA;
-    border-radius: 3px;
-    transition: .4s;
+    color: white;
+    margin: 30px auto 50px;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    background: #00aced;
+    border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
 }
 
 .group_register_btn:hover {
-    background: #58ACFA;
-    color: #384B41;
+    background: #0489B1;
 }
 
+/*タイムライン登録のフォームをフォーカスしたときのCSSアニメーション*/
 input[type="text"] {
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     transition: all .3s;
     width: 200px;
 }
+
 input[type="text"]:focus {
     width: 300px;
+}
+
+/*トップ画面の使い方のところ*/
+.howtouse {
+    border-top: solid 2px #F25F5C;/*線*/
+    border-bottom: solid 2px #F25F5C;/*線*/
+    margin-bottom: 30px;
+    color: #585858;
+}
+
+/*トップ画面の使い方のところでクリックした後のデザイン*/
+.change-top {
+  margin-top: 100px;
+}
+
+/*使い方のところの画像*/
+.screenshot{
+  width:70%;
+}
+
+/*タイムラインを選ぶリンクのところ*/
+.timeline-select {
+  border-bottom:solid 1px #D8D8D8;
+  margin-bottom: 10px;
+  margin-top: 25px;
+  width: 70%;
+}
+
+.timeline-select a {
+  color: #585858;
+}
+
+/*タイムラインの名前が書いてあるところ*/
+.timeline-name{
+  margin-bottom: 10px;
+}
+
+
+/*フッターデザイン*/
+.footer {
+  color: #A4A4A4;
+  font-size: 10px;
+  margin-top: 100px;
+}
+
+/*ツイートに含まれる画像*/
+.tweet-image {
+  width: 40%;
+  margin:3px 0px;
+  border-radius: 5px;
 }
